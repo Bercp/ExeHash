@@ -1,0 +1,26 @@
+def hash_function(key):
+    return key % 3
+
+def hashvetor():
+    hash_vetor = [None] * 3
+    return hash_vetor
+
+def adicionar(hash_vetor, key):
+    resto = hash_function(key)
+    
+    if hash_vetor[resto] is None:
+        hash_vetor[resto] = []
+    
+
+    hash_vetor[resto].append({"chave": key})
+
+hash_vetor = hashvetor()
+
+adicionar(hash_vetor, 12)
+adicionar(hash_vetor, 23)
+adicionar(hash_vetor, 4)
+adicionar(hash_vetor, 7)
+adicionar(hash_vetor, 9)
+adicionar(hash_vetor, 8)
+adicionar(hash_vetor, 13)
+print(f"Chaves do resto 0: {hash_vetor[0]} \n Chaves do resto 1: {hash_vetor[1]} \n Chaves do resto 2: {hash_vetor[2]}")
