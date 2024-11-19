@@ -1,1 +1,46 @@
+class Hash:
+    def __init__(self, key):
+        self.key = key
+        self.next = None
 
+def Hashkey_function(key):
+    return key % 3
+
+def Hashvetor():
+    hash_vetor = [None] * 3
+    return hash_vetor
+
+def adicionar(hash_vetor, key):
+    resto = Hashkey_function(key)
+    hash = Hash(key)
+    if hash_vetor[resto] is None:
+        hash_vetor[resto] = hash
+    else:
+        atual = hash_vetor[resto]
+        while atual.next is not None:
+            atual = atual.next
+        atual.next = hash
+
+def imprimir_hash_vetor(hash_vetor):
+    for i in range(3):
+        print(f"Chaves do resto {i}: ", end="")
+        atual = hash_vetor[i]
+        if atual is None:
+            print("[]")
+        else:
+            while atual is not None:
+                print(f"[{atual.key}]", end="")
+                atual = atual.next
+            print("")
+
+hash_vetor = Hashvetor()
+
+adicionar(hash_vetor, 12)
+adicionar(hash_vetor, 23)
+adicionar(hash_vetor, 4)
+adicionar(hash_vetor, 7)
+adicionar(hash_vetor, 9)
+adicionar(hash_vetor, 8)
+adicionar(hash_vetor, 13)
+
+imprimir_hash_vetor(hash_vetor)
